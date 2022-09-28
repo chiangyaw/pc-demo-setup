@@ -1,0 +1,11 @@
+output/*
+panw_keypair.pem
+bechong-test-nginx.yaml
+bechong-test-pod.yaml
+bechong-test-validate.yaml
+daemonset.yaml
+terraform.tfstate
+terraform.tfstate.backup
+**/.terraform/*
+*.tfstate
+*.tfstate.*

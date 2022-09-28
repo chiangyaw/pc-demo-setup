@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: panw-webserver
+  namespace: panw-webserver
+  labels:
+    app: panw-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: panw-webserver
+  template:
+    metadata:
+      labels:
+        app: panw-webserver
+    spec:
+      containers:
+      - name: panw-webserver
+        image: 183538325842.dkr.ecr.ap-southeast-1.amazonaws.com/panw-webserver:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: panw-webserver-lb
+  namespace: panw-webserver
+spec:
+  type: LoadBalancer
+  selector:
+    app: panw-webserver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
