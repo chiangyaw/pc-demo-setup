@@ -32,16 +32,21 @@ pipeline {
         stage('Building image') { 
             steps { 
                 script{
-                 dockerImage = docker.build "${image_repo_name}:${image_tag}"
+                 sh "docker build --no-cache -t ${image_repo_name}:${image_tag} ."
                 }
             }
         }
-        stage('Test'){
+        stage('Scanning image'){
             steps {
                  echo 'Empty'
             }
         }
-        stage('Pusing to ECR') {
+        stage('Publishing Scan Result'){
+            steps {
+                 echo 'Empty'
+            }
+        }
+        stage('Pushing to ECR') {
             steps {
                 script{
                     sh "docker tag ${image_repo_name}:${image_tag} ${repository_uri}:${image_tag}"
