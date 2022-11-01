@@ -36,6 +36,8 @@ resource "aws_eks_cluster" "panw_eks_cluster" {
 
  vpc_config {
   subnet_ids = aws_subnet.panw_eks_sub[*].id
+  endpoint_public_access = true
+  public_access_cidrs = ["0.0.0.0/0"]
  }
 
 #  depends_on = [
