@@ -20,7 +20,7 @@ spec:
         image: ${repository_uri}:${image_tag}
         ports:
         - name: http
-          containerPort: 80
+          containerPort: 8080
         imagePullPolicy: Always
 
 ---
@@ -36,4 +36,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8080
